@@ -1,1 +1,44 @@
 /* Empty. Add your own CSS if you like */
+
+.keypad {
+    height: 100% !important;
+    display: -webkit-box !important;
+    display: -moz-box !important;
+    display: -ms-flexbox !important;
+    display: -webkit-flex !important;
+    display: flex !important;
+    -webkit-box-direction: normal !important;
+    -moz-box-direction: normal !important;
+    -webkit-box-orient: vertical !important;
+    -moz-box-orient: vertical !important;
+    -webkit-flex-direction: column !important;
+    -ms-flex-direction: column !important;
+    flex-direction: column !important;
+}
+
+.row-keypad {
+    -webkit-box-flex: 0 !important;
+    -moz-box-flex: 0 !important;
+    -webkit-flex: 0 1 50% !important;
+    -ms-flex: 0 1 50% !important;
+    flex: 1 !important;
+}
+
+.keypadInput {
+    flex: 2 !important;
+}
+
+.keypad-margin {
+    margin: 24% 0px 10px !important;
+}
+
+.col-keypad {
+    /*   background-color: white !important;
+       border: thin solid #387ef5;
+       color: #387ef5;*/
+    font-size: 23px;
+}
+
+.high-footer {
+    height: 55px !important;
+}

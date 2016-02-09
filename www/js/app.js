@@ -44,6 +44,22 @@ angular.module('starter', ['ionic',
                 controller: 'AppCtrl'
             })
 
+            .state('keypad', {
+                url: '/keypad',
+                templateUrl: 'templates/keypad.html',
+                controller: 'SellKeypadCtrl'
+            })
+
+            .state('app.keypad', {
+                url: '/keypad',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/keypad.html',
+                        controller: 'SellKeypadCtrl'
+                    }
+                }
+            })
+
             .state('app.dashboard', {
                 url: '/dashboard',
                 views: {
@@ -51,7 +67,6 @@ angular.module('starter', ['ionic',
                         templateUrl: 'templates/dashboard.html'
                     }
                 }
-
             });
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/app/playlists');
