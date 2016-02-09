@@ -3,7 +3,6 @@ Air
 
 Prerequisites:
 ----------------
-# Install Ionic
 First, install Node.js 4 (Node 5 does not work at the moment!).
 Then, install the latest Cordova and Ionic command-line tools.
 
