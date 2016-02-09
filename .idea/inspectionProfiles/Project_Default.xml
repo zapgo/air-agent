@@ -1,0 +1,31 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <option name="myLocal" value="true" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="17">
+            <item index="0" class="java.lang.String" itemvalue="pyaml" />
+            <item index="1" class="java.lang.String" itemvalue="pillow" />
+            <item index="2" class="java.lang.String" itemvalue="django-object-tools" />
+            <item index="3" class="java.lang.String" itemvalue="django-guardian" />
+            <item index="4" class="java.lang.String" itemvalue="oauth2_provider" />
+            <item index="5" class="java.lang.String" itemvalue="django-import-export" />
+            <item index="6" class="java.lang.String" itemvalue="django" />
+            <item index="7" class="java.lang.String" itemvalue="django-grappelli" />
+            <item index="8" class="java.lang.String" itemvalue="django-ckeditor-updated" />
+            <item index="9" class="java.lang.String" itemvalue="django-bootstrap3" />
+            <item index="10" class="java.lang.String" itemvalue="django-tinymce" />
+            <item index="11" class="java.lang.String" itemvalue="requests" />
+            <item index="12" class="java.lang.String" itemvalue="django-filebrowser" />
+            <item index="13" class="java.lang.String" itemvalue="django-debug-toolbar" />
+            <item index="14" class="java.lang.String" itemvalue="django-reversion" />
+            <item index="15" class="java.lang.String" itemvalue="django-filter" />
+            <item index="16" class="java.lang.String" itemvalue="django-report-builder" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
