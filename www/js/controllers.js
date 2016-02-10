@@ -1,9 +1,24 @@
-angular.module('starter.controllers', [])
+angular.module('air.controllers', [])
 
     .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
     })
 
-    .controller('SellKeypadCtrl', function ($scope) {
+    .controller('SellBitcoinCtrl', function ($scope, $rootScope, Transaction, Timer, $stateParams) {
+        'use strict';
+        var sellAmount = $stateParams.amount;
+        console.log(sellAmount)
+        var qrDetails = Transaction.create('load_bitcoin', sellAmount, 'ZAR');
+
+        qrDetails.then(function (rawData) {
+            $scope.tx_data = rawData.data;
+            console.log($scope.tx_data);
+            var sellBtcExpiry = new Date($scope.tx_data.meta.expiry_timestamp);
+            var sellBtcStart = Date.parse($scope.tx_data.created_timestamp);
+            Timer.initializeClock('clockdiv', sellBtcStart, sellBtcExpiry);
+        });
+    })
+
+    .controller('SellKeypadCtrl', function ($scope, $state) {
         'use strict';
 
         $scope.viewTitle = 'Sell bitcoin';
@@ -33,6 +48,13 @@ angular.module('starter.controllers', [])
                 console.log($scope.keypadVar.length)
 
             }
-        }
+        };
+
+        $scope.submit = function (amount) {
+            console.log(amount);
+            $state.go('app.sell_bitcoin', {
+                amount: amount
+            });
+        };
 
     });

@@ -4,10 +4,12 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic',
-                           'starter.controllers',
-                           'starter.controllers.account',
-                           'starter.services.account'])
+angular.module('air', ['ionic',
+    'air.controllers',
+    'air.controllers.account',
+    'air.services',
+    'air.services.account',
+    'air.services.transaction'])
 
     .constant('API', 'https://app.zapgo.co/api/1')
 
@@ -57,6 +59,19 @@ angular.module('starter', ['ionic',
                         templateUrl: 'templates/keypad.html',
                         controller: 'SellKeypadCtrl'
                     }
+                }
+            })
+
+            .state('app.sell_bitcoin', {
+                url: '/sell_bitcoin',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/sell_bitcoin.html',
+                        controller: 'SellBitcoinCtrl'
+                    }
+                },
+                params: {
+                    amount: null
                 }
             })
 

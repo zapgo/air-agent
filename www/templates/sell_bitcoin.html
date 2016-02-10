@@ -1,0 +1,34 @@
+<ion--view view-title="Sell Bitcoin">
+    <ion-header-bar class="hide-lines">
+        <div class="button button-clear hide-lines" ng-click="QRBack()">
+            <span class="icon ion-arrow-left-c"></span>
+        </div>
+        <div class="button button-clear hide-lines" ng-click="closeModalQR()">
+            <span class="icon ion-close"></span>
+        </div>
+    </ion-header-bar>
+
+    <ion-content class="padding has-header" overflow-scroll="false" scroll="false">
+
+        <div class="item item-image hide-lines">
+            <a href="{{ tx_data.meta.bitcoin_uri }}" onclick="openExternal(this.href)">
+                <img src="{{ tx_data.meta.qr_code }}" style="width:200px; height: auto;">
+            </a>
+        </div>
+
+        <div class="item hide-lines">
+            <div align="center"><p>{{ tx_data.meta.bitcoin_address }}</p></div>
+        </div>
+
+        <div class="item hide-lines">
+            <div align="center"><h1>{{ tx_data.meta.amount_required }} BTC</h1></div>
+        </div>
+
+        <div class="item hide-lines">
+            <div align="center" id="clockdiv"><h1><span class="minutes"></span>:<span class="seconds"></span></h1></div>
+        </div>
+
+    </ion-content>
+
+
+</ion--view>

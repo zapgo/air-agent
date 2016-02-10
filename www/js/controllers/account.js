@@ -1,6 +1,6 @@
 /*global angular, console, window, alert, ionic */
 
-angular.module('starter.controllers.account', [])
+angular.module('air.controllers.account', [])
 
     .controller('LoginCtrl', function ($scope, $ionicModal, $state, $ionicLoading, $rootScope, User, $ionicPopup) {
         //console.log('Login Controller Initialized');

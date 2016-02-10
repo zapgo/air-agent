@@ -17,6 +17,7 @@
 }
 
 .row-keypad {
+    padding: 0px !important;
     -webkit-box-flex: 0 !important;
     -moz-box-flex: 0 !important;
     -webkit-flex: 0 1 50% !important;
@@ -41,4 +42,12 @@
 
 .high-footer {
     height: 55px !important;
+
+}
+
+.hide-lines {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
 }

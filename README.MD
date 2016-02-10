@@ -14,6 +14,10 @@ Use the Ionic tool to build, test, and run the app.
 
 > ionic serve
 
+Test user credentials:
+wi@zapgo.co
+Wi123456
+
 Editing the design:
 -------------------
 CSS can be customised in www/css/style.css
