@@ -46,14 +46,14 @@ angular.module('air', ['ionic',
                 controller: 'AppCtrl'
             })
 
-            .state('keypad', {
-                url: '/keypad',
+            .state('sell_keypad', {
+                url: '/sell_keypad',
                 templateUrl: 'templates/keypad.html',
                 controller: 'SellKeypadCtrl'
             })
 
-            .state('app.keypad', {
-                url: '/keypad',
+            .state('app.sell_keypad', {
+                url: '/sell_keypad',
                 views: {
                     'menuContent': {
                         templateUrl: 'templates/keypad.html',
