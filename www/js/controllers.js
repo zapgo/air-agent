@@ -3,11 +3,12 @@ angular.module('air.controllers', [])
     .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
     })
 
-    .controller('SellBitcoinCtrl', function ($scope, $rootScope, Transaction, Timer, $stateParams) {
+    .controller('SellBitcoinCtrl', function ($scope, $rootScope, $stateParams, $window, $state, Transaction, Timer) {
         'use strict';
         var sellAmount = $stateParams.amount;
-        console.log(sellAmount)
+        console.log(sellAmount);
         var qrDetails = Transaction.create('load_bitcoin', sellAmount, 'ZAR');
+        var intervalId;
 
         qrDetails.then(function (rawData) {
             $scope.tx_data = rawData.data;
@@ -15,7 +16,33 @@ angular.module('air.controllers', [])
             var sellBtcExpiry = new Date($scope.tx_data.meta.expiry_timestamp);
             var sellBtcStart = Date.parse($scope.tx_data.created_timestamp);
             Timer.initializeClock('clockdiv', sellBtcStart, sellBtcExpiry);
+            intervalId = setInterval(pollSellTx, 5000);
         });
+
+        function pollSellTx() {
+            console.log('Tx Poll');
+            console.log($scope.tx_data.transaction_code);
+            var getTx = Transaction.get($scope.tx_data.transaction_code);
+            getTx.then(
+                function (rawData) {
+                    var tx = rawData.data.results;
+                    console.log(tx.status);
+                    console.log(tx);
+
+                    if (tx.status == 'Pending') {
+                        console.log('pending');
+
+                    } else if (tx.status == 'Complete') {
+                        console.log('complete');
+                        $window.localStorage.removeItem('myTransactions');
+                        clearInterval(intervalId);
+                        $state.go('sell_success', {
+                            amount: tx.amount
+                        });
+                    }
+                }
+            )
+        }
     })
 
     .controller('SellKeypadCtrl', function ($scope, $state) {

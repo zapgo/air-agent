@@ -52,6 +52,14 @@ angular.module('air', ['ionic',
                 controller: 'SellKeypadCtrl'
             })
 
+            .state('sell_success', {
+                url: '/sell_success',
+                templateUrl: 'templates/sell_success.html',
+                params: {
+                    amount: null
+                }
+            })
+
             .state('app.sell_keypad', {
                 url: '/sell_keypad',
                 views: {
