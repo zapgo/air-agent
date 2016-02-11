@@ -60,12 +60,22 @@ angular.module('air', ['ionic',
                 }
             })
 
-            .state('app.sell_keypad', {
-                url: '/sell_keypad',
+            .state('app.sell_btc_keypad', {
+                url: '/sell_btc_keypad',
                 views: {
                     'menuContent': {
                         templateUrl: 'templates/keypad.html',
                         controller: 'SellKeypadCtrl'
+                    }
+                }
+            })
+
+            .state('app.buy_btc_keypad', {
+                url: '/buy_btc_keypad',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/keypad.html',
+                        controller: 'BuyKeypadCtrl'
                     }
                 }
             })

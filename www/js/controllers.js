@@ -84,4 +84,45 @@ angular.module('air.controllers', [])
             });
         };
 
+    })
+
+    .controller('BuyKeypadCtrl', function ($scope, $state) {
+        'use strict';
+
+        $scope.viewTitle = 'Buy bitcoin';
+        $scope.keypadVar = '';
+        $scope.action = 'Next';
+
+        $scope.keyPress = function (value, source) {
+            if (source === 'LEFT_CONTROL') {
+                if ($scope.keypadVar.indexOf('.') === -1) {
+                    if ($scope.keypadVar.length === 0)
+                        $scope.keypadVar += '0.';
+                    else
+                        $scope.keypadVar += '.';
+                }
+                console.log($scope.keypadVar.length)
+            }
+            else if (source === 'RIGHT_CONTROL') {
+                $scope.keypadVar = $scope.keypadVar.substr(0, $scope.keypadVar.length - 1);
+                console.log($scope.keypadVar.length)
+            }
+            else if (source === 'NUMERIC_KEY') {
+                if ($scope.keypadVar.indexOf('.') === -1) {
+                    $scope.keypadVar += value;
+                } else if ($scope.keypadVar.length - $scope.keypadVar.indexOf('.') <= 2) {
+                    $scope.keypadVar += value;
+                }
+                console.log($scope.keypadVar.length)
+
+            }
+        };
+
+        $scope.submit = function (amount) {
+            console.log(amount);
+            $state.go('app.scan_btc_address', {
+                amount: amount
+            });
+        };
+
     });
