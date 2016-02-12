@@ -9,7 +9,7 @@ angular.module('air.services', [])
 
         self.initializeClock = function (id, startTime, endTime) {
             var clock = document.getElementById(id);
-            console.log(clock)
+            console.log(clock);
             var minutesSpan = clock.querySelector('.minutes');
             var secondsSpan = clock.querySelector('.seconds');
             time = startTime;
@@ -19,8 +19,9 @@ angular.module('air.services', [])
 
                 var t = self.getTimeRemaining(endTime);
 
-                minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-                secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+                minutesSpan.innerHTML = minutesSpan.innerHTML.replace(/\d+/,('0' + t.minutes).slice(-2));
+                secondsSpan.innerHTML = secondsSpan.innerHTML.replace(/\d+/,('0' + t.seconds).slice(-2));
+                console.log(secondsSpan);
 
 
                 if (t.total <= 0) {
@@ -31,6 +32,7 @@ angular.module('air.services', [])
 
             updateClock();
             timerId = setInterval(updateClock, 1000);
+            console.log(timerId)
         };
 
         self.getTimeRemaining = function (endtime, label) {
@@ -52,6 +54,11 @@ angular.module('air.services', [])
                 '<h2 class="title text-center">Please try again</h2>'
             });
         };
+
+        self.stopTimer = function () {
+            console.log('stopping timer ' + timerId);
+            clearInterval(timerId);
+        }
 
     })
 

@@ -7,6 +7,11 @@ angular.module('air.controllers', [])
         'use strict';
         var sellAmount = $stateParams.amount;
         console.log(sellAmount);
+
+        if (sellAmount == undefined) {
+            $state.go('app.sell_btc_keypad')
+        }
+
         var qrDetails = Transaction.create('load_bitcoin', sellAmount, 'ZAR');
         var intervalId;
 
@@ -44,6 +49,7 @@ angular.module('air.controllers', [])
         $scope.$on('$ionicView.afterLeave', function () { // $scope.$on('$destroy'
             console.log('LEAVE');
             clearInterval(intervalId);
+            Timer.stopTimer();
         });
     })
 
