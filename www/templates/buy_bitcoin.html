@@ -1,0 +1,42 @@
+<ion--view view-title="Buying Bitcoin">
+
+    <ion-content class="padding has-header" overflow-scroll="false" scroll="false">
+        <div class="row">
+            <div class="col text-center">
+                <h3 class="title">Buying R{{ buyAmount }} worth of bitcoin.</h3>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col text-center">
+                <button class="button button-dark">Scan Receive Address</button>
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col text-center">
+                <p>or</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="item item-divider text-center">
+                Manual Entry
+            </div>
+            <div class="item item-text-wrap">
+                <label class="item item-input">
+                    <input ng-model="tx.to" type="text" placeholder="Bitcoin Address">
+                </label>
+                <br>
+                <div class="col text-center">
+                    <button class="button button-small button-dark">Continue</button>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+
+
+</ion--view>

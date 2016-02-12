@@ -5,6 +5,7 @@ angular.module('air.services', [])
         'use strict';
         var time;
         var self = this;
+        var timerId;
 
         self.initializeClock = function (id, startTime, endTime) {
             var clock = document.getElementById(id);
@@ -15,15 +16,11 @@ angular.module('air.services', [])
 
             function updateClock() {
                 time = time + 1000;
-                console.log(time);
 
                 var t = self.getTimeRemaining(endTime);
 
                 minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
                 secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
-
-                console.log(minutesSpan.innerHTML);
-                console.log(secondsSpan.innerHTML);
 
 
                 if (t.total <= 0) {
@@ -33,7 +30,7 @@ angular.module('air.services', [])
             }
 
             updateClock();
-            $rootScope.timeinterval = setInterval(updateClock, 1000);
+            timerId = setInterval(updateClock, 1000);
         };
 
         self.getTimeRemaining = function (endtime, label) {

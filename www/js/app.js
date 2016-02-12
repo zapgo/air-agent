@@ -5,6 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 angular.module('air', ['ionic',
+    'intlpnIonic',
     'air.controllers',
     'air.controllers.account',
     'air.services',
@@ -76,6 +77,28 @@ angular.module('air', ['ionic',
                     'menuContent': {
                         templateUrl: 'templates/keypad.html',
                         controller: 'BuyKeypadCtrl'
+                    }
+                }
+            })
+
+            .state('app.buy_bitcoin', {
+                url: '/buy_bitcoin',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/buy_bitcoin.html',
+                        controller: 'BuyBitcoinCtrl'
+                    }
+                },
+                params: {
+                    amount: null
+                }
+            })
+
+            .state('app.buy_airtime', {
+                url: '/buy_airtime',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/buy_airtime.html'
                     }
                 }
             })

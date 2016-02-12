@@ -16,7 +16,7 @@ angular.module('air.controllers', [])
             var sellBtcExpiry = new Date($scope.tx_data.meta.expiry_timestamp);
             var sellBtcStart = Date.parse($scope.tx_data.created_timestamp);
             Timer.initializeClock('clockdiv', sellBtcStart, sellBtcExpiry);
-            intervalId = setInterval(pollSellTx, 5000);
+            intervalId = setInterval(pollSellTx, 2500);
         });
 
         function pollSellTx() {
@@ -29,10 +29,7 @@ angular.module('air.controllers', [])
                     console.log(tx.status);
                     console.log(tx);
 
-                    if (tx.status == 'Pending') {
-                        console.log('pending');
-
-                    } else if (tx.status == 'Complete') {
+                    if (tx.status == 'Complete') {
                         console.log('complete');
                         $window.localStorage.removeItem('myTransactions');
                         clearInterval(intervalId);
@@ -43,6 +40,18 @@ angular.module('air.controllers', [])
                 }
             )
         }
+        $scope.$on('$ionicView.afterLeave', function () { // $scope.$on('$destroy'
+            console.log('LEAVE');
+            clearInterval(intervalId);
+        });
+    })
+
+    .controller('BuyBitcoinCtrl', function ($scope, $stateParams) {
+        'use strict';
+        console.log('buy controller');
+        $scope.buyAmount = $stateParams.amount;
+        console.log($scope.buyAmount)
+
     })
 
     .controller('SellKeypadCtrl', function ($scope, $state) {
@@ -120,7 +129,7 @@ angular.module('air.controllers', [])
 
         $scope.submit = function (amount) {
             console.log(amount);
-            $state.go('app.scan_btc_address', {
+            $state.go('app.buy_bitcoin', {
                 amount: amount
             });
         };
