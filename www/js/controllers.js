@@ -40,6 +40,7 @@ angular.module('air.controllers', [])
                 }
             )
         }
+
         $scope.$on('$ionicView.afterLeave', function () { // $scope.$on('$destroy'
             console.log('LEAVE');
             clearInterval(intervalId);
@@ -50,7 +51,22 @@ angular.module('air.controllers', [])
         'use strict';
         console.log('buy controller');
         $scope.buyAmount = $stateParams.amount;
-        console.log($scope.buyAmount)
+        console.log($scope.buyAmount);
+
+        $scope.scanQr = function () {
+            cordova.plugins.barcodeScanner.scan(
+                function (result) {
+                    alert("We got a barcode\n" +
+                        "Result: " + result.text + "\n" +
+                        "Format: " + result.format + "\n" +
+                        "Cancelled: " + result.cancelled);
+                },
+                function (error) {
+                    alert("Scanning failed: " + error);
+                }
+            );
+        }
+
 
     })
 

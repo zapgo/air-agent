@@ -7,10 +7,9 @@
             </div>
         </div>
 
-
         <div class="row">
             <div class="col text-center">
-                <button class="button button-dark">Scan Receive Address</button>
+                <button class="button button-dark" ng-click="scanQr()">Scan Receive Address</button>
             </div>
         </div>
         <br>
@@ -27,7 +26,7 @@
             </div>
             <div class="item item-text-wrap">
                 <label class="item item-input">
-                    <input ng-model="tx.to" type="text" placeholder="Bitcoin Address">
+                    <input ng-model="address" type="text" placeholder="Bitcoin Address">
                 </label>
                 <br>
                 <div class="col text-center">

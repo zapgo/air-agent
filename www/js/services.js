@@ -55,23 +55,9 @@ angular.module('air.services', [])
 
     })
 
-    .service('QR Scanner', function (API, $rootScope, $ionicPopup) {
+    .service('parseURL', function () {
         'use strict';
         var self = this;
-
-        self.scanBarcode = function () {
-            cordova.plugins.barcodeScanner.scan(
-                function (result) {
-                    return {
-                        'address': self.parseUri(result.text).host,
-                        'amount': self.parseUri(result.text).queryKey.amount
-                    };
-
-                },
-                function (error) {
-                    alert("Scanning failed: " + error);
-                })
-        };
 
         self.parseUri = function (str) {
             var o = parseUri.options,

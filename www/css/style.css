@@ -33,6 +33,10 @@
     margin: 24% 0px 10px !important;
 }
 
+.align-left {
+    text-align: left;
+}
+
 .button.button-dashboard {
     border-color: #444 !important;
     background-color: transparent;
@@ -52,35 +56,11 @@
     text-align: left;
     text-overflow: ellipsis;
     font-size: 16px;
-    cursor: pointer;}
-    .button.button-positive {
-      border-color: transparent;
-      background-color: #007aff;
-      color: #fff; }
-    .button.button-positive:hover {
-      color: #fff;
-      text-decoration: none; }
-    .button.button-positive.active, .button.button-positive.activated {
-      background-color: #0c60ee; }
-    .button.button-positive.button-clear {
-      border-color: transparent;
-      background: none;
-      box-shadow: none;
-      color: #387ef5; }
-    .button.button-positive.button-icon {
-      border-color: transparent;
-      background: none; }
-    .button.button-positive.button-outline {
-      border-color: #387ef5;
-      background: transparent;
-      color: #387ef5; }
-      .button.button-positive.button-outline.active, .button.button-positive.button-outline.activated {
-        background-color: #387ef5;
-        box-shadow: none;
-        color: #fff; }
+    cursor: pointer;
+}
 
 .no-margin {
-  margin: 0%;
+  margin: 0;
 }
 
 .col-keypad {
@@ -134,9 +114,6 @@
 }
 
 .popup-buttons .button {
-
     background-color: #444;
-
     font-size: 20px;
-
 }
