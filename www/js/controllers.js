@@ -3,7 +3,7 @@ angular.module('air.controllers', [])
     .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
     })
 
-    .controller('SellBitcoinCtrl', function ($scope, $rootScope, $stateParams, $window, $state, Transaction, Timer) {
+    .controller('SellBitcoinCtrl', function ($scope, $rootScope, $stateParams, $window, $state, Transaction, Timer, $ionicLoading) {
         'use strict';
         var sellAmount = $stateParams.amount;
         console.log(sellAmount);
@@ -15,8 +15,25 @@ angular.module('air.controllers', [])
         var qrDetails = Transaction.create('load_bitcoin', sellAmount, 'ZAR');
         var intervalId;
 
+        $ionicLoading.show({
+            //template: '<ion-spinner class="spinner-light" icon="ripple"></ion-spinner>',
+            templateUrl: 'templates/loading.html',
+            hideOnStateChange: true
+        });
+
         qrDetails.then(function (rawData) {
             $scope.tx_data = rawData.data;
+
+            // Pre-load image in js:
+            var qrImageLoad = new Image(300,300);
+            qrImageLoad.src = $scope.tx_data.meta.qr_code;
+            var qrImage = document.images[0]; //first image on page
+
+            qrImageLoad.onload = function(){
+                qrImage.src = this.src;
+                $ionicLoading.hide()
+            };
+
             console.log($scope.tx_data);
             var sellBtcExpiry = new Date($scope.tx_data.meta.expiry_timestamp);
             var sellBtcStart = Date.parse($scope.tx_data.created_timestamp);

@@ -26,6 +26,8 @@ angular.module('air', ['ionic',
             if (window.StatusBar) {
                 // org.apache.cordova.statusbar required
                 StatusBar.styleDefault();
+                StatusBar.overlaysWebView(true);
+                StatusBar.show();
             }
         });
     })
@@ -56,6 +58,14 @@ angular.module('air', ['ionic',
             .state('sell_success', {
                 url: '/sell_success',
                 templateUrl: 'templates/sell_success.html',
+                params: {
+                    amount: null
+                }
+            })
+
+            .state('loading', {
+                url: '/loading',
+                templateUrl: 'templates/loading.html',
                 params: {
                     amount: null
                 }

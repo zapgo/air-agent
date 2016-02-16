@@ -1,10 +1,10 @@
 <ion--view view-title="Sell Bitcoin">
 
-    <ion-content class="padding has-header" overflow-scroll="false" scroll="false">
+    <ion-content class="padding has-header" overflow-scroll="false" scroll="false" cache-view="false">
 
         <div class="item item-image hide-lines">
             <a href="{{ tx_data.meta.bitcoin_uri }}" onclick="openExternal(this.href)">
-                <img src="{{ tx_data.meta.qr_code }}" style="width:200px; height: auto;">
+                <img ng-src="{{ tx_data.meta.qr_code }}" style="width:200px; height: auto;">
             </a>
         </div>
 
