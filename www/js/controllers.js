@@ -27,7 +27,7 @@ angular.module('air.controllers', [])
             // Pre-load image in js:
             var qrImageLoad = new Image(300,300);
             qrImageLoad.src = $scope.tx_data.meta.qr_code;
-            var qrImage = document.images[0]; //first image on page
+            var qrImage = document.getElementById("qr_code");
 
             qrImageLoad.onload = function(){
                 qrImage.src = this.src;
