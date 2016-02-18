@@ -24,6 +24,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Colors
 $air: #56C1ED;
 $bitcoin: #FBA75A;
+$graybg: #F6F6F6;
 
 // Buttons
 .button.button-air {
@@ -108,13 +109,17 @@ $bitcoin: #FBA75A;
   color: $air;
 }
 
+.graybg {
+  background-color: $graybg;
+}
+
 .success {
   color: #42D73C;
 }
 
 // Dashboard styling
 .dashboard {
-  background-color: #F6F6F6;
+  background-color: $graybg;
   // Remove some default padding/margin
   .row, .col-50, .col {
     padding: 0;
