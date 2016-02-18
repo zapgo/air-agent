@@ -25,6 +25,40 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 $air: #56C1ED;
 $bitcoin: #FBA75A;
 
+// Buttons
+.button.button-air {
+  border-color: transparent;
+  background-color: $air;
+  color: #fff; 
+}
+.button.button-air:hover {
+  color: #fff;
+  text-decoration: none; 
+}
+.button.button-air.active, .button.button-air.activated {
+  background-color: darken( $air, 15% ); 
+}
+.button.button-air.button-clear {
+  border-color: transparent;
+  background: none;
+  box-shadow: none;
+  color: $air; 
+}
+.button.button-air.button-icon {
+  border-color: transparent;
+  background: none; 
+}
+.button.button-air.button-outline {
+  border-color: $air;
+  background: transparent;
+  color: $air; 
+}
+.button.button-air.button-outline.active, .button.button-air.button-outline.activated {
+  background-color: $air;
+  box-shadow: none;
+  color: #fff; 
+}
+
 // Custom navbar
 .bar.bar-air {
   border-color: darken( $air, 50% );
@@ -32,12 +66,18 @@ $bitcoin: #FBA75A;
   background-image: none;
   // background-image: linear-gradient(0deg, #6b46e5, #6b46e5 50%, transparent 50%);
   color: #fff; 
+  &.activated {
+    background-color: darken( $air, 15);
+  }
 }
 .bar.bar-air .title {
   color: #fff; 
+  
 }
-.bar.bar-air.bar-footer {
-  // background-image: linear-gradient(180deg, #6b46e5, #6b46e5 50%, transparent 50%); 
+.bar.bar-air.bar-footer{
+  .title {
+    top: 5px; // Fix h1 title position
+  }
 }
 .bar-air .button {
   border-color: transparent;
@@ -61,6 +101,15 @@ $bitcoin: #FBA75A;
 .bar-air .button.button-icon {
   border-color: transparent;
   background: none; 
+}
+
+// Color class
+.air {
+  color: $air;
+}
+
+.success {
+  color: #42D73C;
 }
 
 // Dashboard styling
