@@ -152,6 +152,39 @@ $bitcoin: #FBA75A;
   }
 }
 
+// sidebar menu 
+.app-side-menu {
+  background-color: #303030;
+}
+
+.app-side-menu-list {
+  position:relative;
+  top: 120px;
+  .item {
+    border: none;
+    background-color: transparent;
+    &:last-of-type {
+      a {
+        border: none;
+      }
+    }
+    a {
+      color: white;
+      background-color: transparent;
+      font-size: 1.3em;
+      padding-left: 0;
+      margin-left: 20px;
+      border-bottom: 1px solid #464646;
+      &.activated {
+        margin-left: 0;
+        padding-left: 20px;
+        background-color: #464646;
+        border-color: darken(#464646, 10%);
+      }
+    }
+  }
+}
+
 // Taken from style.css
 .keypad {
   height: 100% !important;
