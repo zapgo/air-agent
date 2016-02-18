@@ -20,5 +20,6 @@ Wi123456
 
 Editing the design:
 -------------------
-CSS can be customised in www/css/style.css
+CSS can be customised in scss/ionic.app.scss - run gulp sass to compile your changes
+
 HTML templates are in www/templates
