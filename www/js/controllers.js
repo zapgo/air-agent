@@ -173,4 +173,21 @@ angular.module('air.controllers', [])
             });
         };
 
+    })
+
+    .controller('SellSuccessCtrl', function ($scope, $state, $stateParams) {
+        'use strict';
+        $scope.amount = $stateParams.amount;
+    })
+
+    .controller('BuyAirtimeCtrl', function ($scope, $state, Bitrefill) {
+        'use strict';
+        $scope.number = '';
+        $scope.lookup_number = function (number) {
+            var lookup = Bitrefill.lookup_number(number);
+            lookup.then( function (rawData) {
+                $scope.airtime_info = rawData;
+                console.log(rawData);
+            })
+        }
     });

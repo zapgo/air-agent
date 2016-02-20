@@ -5,7 +5,7 @@
           <div class="item item-divider">
             Mobile number to recharge
           </div>
-            <intlpn ng-model="phone.number" placeholder="Mobile number" default-country="za"></intlpn>
+            <intlpn ng-model="number" placeholder="Mobile number" default-country="za"></intlpn>
         </div>
     </ion-content>
 
@@ -13,7 +13,7 @@
     <ion-footer-bar class="high-footer bar-dark">
     </ion-footer-bar>
 
-    <button class="high-footer bar bar-footer bar-air" ng-click="submit(keypadVar)">
+    <button class="high-footer bar bar-footer bar-air" ng-click="lookup_number(number)">
         <h1 class="title">Continue</h1>
     </button>
 

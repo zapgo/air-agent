@@ -59,7 +59,8 @@ angular.module('air', ['ionic',
                 url: '/sell_success',
                 templateUrl: 'templates/sell_success.html',
                 params: {
-                    amount: null
+                    amount: null,
+                    controller: 'SellSuccessCtrl'
                 }
             })
 
@@ -108,7 +109,8 @@ angular.module('air', ['ionic',
                 url: '/buy_airtime',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/buy_airtime.html'
+                        templateUrl: 'templates/buy_airtime.html',
+                        controller: 'BuyAirtimeCtrl'
                     }
                 }
             })
