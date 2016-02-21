@@ -554,7 +554,7 @@ angular.module('air.controllers', [])
                 currency: $stateParams.airtimeData.country.currencies[0],
                 defaultSelected: {
                     operator: $stateParams.airtimeData.operator.slug,
-                    package: $stateParams.airtimeData.operator.packages[0].value
+                    value_package: $stateParams.airtimeData.operator.packages[0].value
                 }
             };
             console.log('hello');
@@ -566,15 +566,17 @@ angular.module('air.controllers', [])
             var operator_slug = $scope.data.operator_slug;
             var value_package = $scope.data.value_package;
 
+            console.log(number,operator_slug,email,value_package);
+
             var getQuote = Bitrefill.quote(number,
-                operator_slug,
-                email,
-                value_package);
+                   operator_slug,
+                   email,
+                   value_package);
 
             getQuote.then(function (response) {
-                    var quote = response.data
-                    console.log(quote)
-                    $state.go('app.buy_airtime_success', {
+                    var quote = response.data;
+                    console.log(quote);
+                    $state.go('app.buy_airtime_confirm', {
                         number: number,
                         operator_slug: operator_slug,
                         package: value_package,
