@@ -33,36 +33,6 @@
     margin: 24% 0px 10px !important;
 }
 
-.align-left {
-    text-align: left;
-}
-
-.button.button-dashboard {
-    border-color: #444 !important;
-    background-color: transparent;
-    color: #444;
-    position: relative;
-    line-height: 20px;
-    display: block;
-    margin-left: 0;
-    margin-right: 0;
-    padding: 0 0 0 0px;
-    min-width: 90%;
-    min-height: 90%;
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 0px;
-    vertical-align: top;
-    text-align: left;
-    text-overflow: ellipsis;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.no-margin {
-  margin: 0;
-}
-
 .col-keypad {
     /*   background-color: white !important;
        border: thin solid #387ef5;

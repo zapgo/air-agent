@@ -91,6 +91,20 @@ angular.module('air', ['ionic',
                 }
             })
 
+            .state('app.buy_bitcoin_provide_email', {
+                url: '/buy_bitcoin_provide_email',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/buy_bitcoin_provide_email.html',
+                        controller: 'BuyBitcoinProvideEmailCtrl'
+                    }
+                },
+                params: {
+                    amount: null,
+                    email: null
+                }
+            })
+
             .state('app.buy_bitcoin', {
                 url: '/buy_bitcoin',
                 views: {
@@ -133,7 +147,17 @@ angular.module('air', ['ionic',
                         templateUrl: 'templates/dashboard.html'
                     }
                 }
+            })
+
+            .state('app.accounts', {
+                url: '/accounts',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/accounts.html'
+                    }
+                }
             });
+
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/app/dashboard');
     });
