@@ -19,8 +19,8 @@ angular.module('air.services', [])
 
                 var t = self.getTimeRemaining(endTime);
 
-                minutesSpan.innerHTML = minutesSpan.innerHTML.replace(/\d+/,('0' + t.minutes).slice(-2));
-                secondsSpan.innerHTML = secondsSpan.innerHTML.replace(/\d+/,('0' + t.seconds).slice(-2));
+                minutesSpan.innerHTML = minutesSpan.innerHTML.replace(/\d+/, ('0' + t.minutes).slice(-2));
+                secondsSpan.innerHTML = secondsSpan.innerHTML.replace(/\d+/, ('0' + t.seconds).slice(-2));
                 console.log(secondsSpan);
 
 
@@ -93,5 +93,28 @@ angular.module('air.services', [])
                 strict: /^(?:([^:\/?#]+):)?(?:\/\/((?:(([^:@]*)(?::([^:@]*))?)?@)?([^:\/?#]*)(?::(\d*))?))?((((?:[^?#\/]*\/)*)([^?#]*))(?:\?([^#]*))?(?:#(.*))?)/,
                 loose: /^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*)(?::([^:@]*))?)?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/
             }
+        }
+    })
+
+    .service('Bitrefill', function ($http, API) {
+        'use strict';
+        var self = this;
+
+        self.lookup_number = function (number) {
+            console.log(number);
+            return $http.post(API + '/bitrefill_lookup/',{
+                'number': number
+            });
+        };
+
+        self.quote = function () {
+            return $http.post(API + '/bitrefill_quote/');
+        };
+
+        self.create = function (tx_type, quote_reference) {
+            return $http.post(API + '/transactions/', {
+                'tx_type': tx_type,
+                'quote_reference': quote_reference
+            });
         }
     });

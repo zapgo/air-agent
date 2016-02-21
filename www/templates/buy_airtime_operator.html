@@ -1,0 +1,35 @@
+<ion--view view-title="Select Package">
+
+    <ion-content class="padding has-header gray-bg">
+        <div class="list card">
+            <div class="item item-image">
+                <img src="{{ data.airtime.operator.logoImage }}">
+            </div>
+        </div>
+        <label class="item item-input item-select">
+            <div class="input-label">
+                Operator
+            </div>
+            <select ng-model="data.operator">
+                <option ng-selected="{{operator.slug==data.defaultSelected.operator}}" ng-repeat="operator in data.operatorList" value="{{ operator.slug }}">{{ operator.name }}</option>
+            </select>
+        </label>
+        <label class="item item-input item-select">
+            <div class="input-label">
+                Package
+            </div>
+            <select ng-model="data.package">
+                <option ng-selected="{{package.value==data.defaultSelected.package}}" ng-repeat="package in data.airtime.operator.packages" value="{{ package.value }}">{{ package.value }} {{ data.currency }}</option>
+            </select>
+        </label>
+    </ion-content>
+
+    <!-- Footer bar hack to get layout right -->
+    <ion-footer-bar class="high-footer bar-dark">
+    </ion-footer-bar>
+
+    <button class="high-footer bar bar-footer bar-air" ng-click="confirm()">
+        <h1 class="title">Continue</h1>
+    </button>
+
+</ion--view>

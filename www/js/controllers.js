@@ -66,11 +66,11 @@ angular.module('air.controllers', [])
             $scope.tx_data = rawData.data;
 
             // Pre-load image in js:
-            var qrImageLoad = new Image(300,300);
+            var qrImageLoad = new Image(300, 300);
             qrImageLoad.src = $scope.tx_data.meta.qr_code;
             var qrImage = document.getElementById("qr_code");
 
-            qrImageLoad.onload = function(){
+            qrImageLoad.onload = function () {
                 qrImage.src = this.src;
                 $ionicLoading.hide()
             };
@@ -192,4 +192,72 @@ angular.module('air.controllers', [])
         }
 
 
+    })
+
+    .controller('SellSuccessCtrl', function ($scope, $state, $stateParams) {
+        'use strict';
+        $scope.amount = $stateParams.amount;
+    })
+
+    .controller('BuyAirtimeCtrl', function ($scope, $state, Bitrefill) {
+        'use strict';
+        $scope.data = {};
+        console.log($scope.data.number);
+        $scope.lookup_number = function (number) {
+            var lookup = Bitrefill.lookup_number(number);
+            lookup.then(function (rawData) {
+                var airtimeData = rawData.data;
+                console.log(rawData);
+                $state.go('app.buy_airtime_operator', {
+                    airtimeData: airtimeData,
+                    number: $scope.data.number
+                });
+            })
+        }
+    })
+
+    .controller('BuyAirtimeOperatorCtrl', function ($scope, $state, Bitrefill, $stateParams) {
+        'use strict';
+        if ($stateParams.airtimeData == null) {
+            $state.go('app.buy_airtime');
+        } else {
+            var operatorList = $stateParams.airtimeData.altOperators;
+            operatorList.push($stateParams.airtimeData.operator);
+            console.log(operatorList);
+
+            $scope.data = {
+                airtime: $stateParams.airtimeData,
+                operatorList: operatorList,
+                currency: $stateParams.airtimeData.country.currencies[0],
+                defaultSelected: {
+                    operator: $stateParams.airtimeData.operator.slug,
+                    package: $stateParams.airtimeData.operator.packages[0].value
+                }
+            };
+            console.log('hello');
+            console.log($scope.data);
+        }
+        $scope.confirm = function () {
+            console.log($scope.data.package)
+            console.log($scope.data.operator)
+        }
+    })
+
+    .controller('BuyAirtimeConfirmCtrl', function ($scope, $state, Bitrefill, $stateParams) {
+        'use strict';
+        if ($stateParams.airtimeData == null) {
+            $state.go('app.buy_airtime');
+        } else {
+            $scope.data = {
+                airtime: $stateParams.airtimeData,
+                currency: $stateParams.airtimeData.country.currencies[0],
+                defaultSelected: {
+                    operator: $stateParams.airtimeData.operator.name,
+                    package: $stateParams.airtimeData.operator.packages[0].value
+                }
+            };
+
+            console.log('hello');
+            console.log($scope.data);
+        }
     });
