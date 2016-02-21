@@ -171,8 +171,8 @@ angular.module('air', ['ionic',
                 },
                 params: {
                     airtimeData: null,
-                    number: null
-
+                    number: null,
+                    email: 'info@zapgo.co'
                 }
             })
 
@@ -181,10 +181,11 @@ angular.module('air', ['ionic',
                 views: {
                     'menuContent': {
                         templateUrl: 'templates/buy_airtime_confirm.html',
-                        controller: 'BuyAirtimeOperatorCtrl'
+                        controller: 'BuyAirtimeConfirmCtrl'
                     }
                 },
                 params: {
+                    quote: null,
                     package: null,
                     number: null,
                     email: 'info@zapgo.co',
