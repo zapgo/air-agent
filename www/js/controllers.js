@@ -1,7 +1,9 @@
 angular.module('air.controllers', [])
 
+
     .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
     })
+
 
     .controller('SellKeypadCtrl', function ($scope, $state) {
         'use strict';
@@ -37,17 +39,39 @@ angular.module('air.controllers', [])
 
         $scope.submit = function (amount) {
             console.log(amount);
-            $state.go('app.sell_bitcoin', {
+            $state.go('app.sell_bitcoin_provide_email', {
                 amount: amount
             });
         };
-
     })
+
+
+    .controller('SellBitcoinProvideEmailCtrl', function ($scope, $state, $stateParams) {
+        'use strict';
+        console.log('buy bitcoin provide email controller');
+        $scope.data = {};
+        $scope.sellAmount = $stateParams.amount;
+        console.log($scope.sellAmount);
+        console.log($scope.data.email);
+
+        $scope.submit = function (amount, email) {
+            console.log(amount);
+            console.log(email);
+            $state.go('app.sell_bitcoin', {
+                amount: amount,
+                email: $scope.data.email
+            });
+        };
+    })
+
 
     .controller('SellBitcoinCtrl', function ($scope, $rootScope, $stateParams, $window, $state, Transaction, Timer, $ionicLoading) {
         'use strict';
         var sellAmount = $stateParams.amount;
         console.log(sellAmount);
+
+        $scope.email = $stateParams.email;
+        console.log($scope.email);
 
         if (sellAmount == undefined) {
             $state.go('app.sell_btc_keypad')
@@ -96,7 +120,7 @@ angular.module('air.controllers', [])
                         console.log('complete');
                         $window.localStorage.removeItem('myTransactions');
                         clearInterval(intervalId);
-                        $state.go('sell_success', {
+                        $state.go('sell_bitcoin_success', {
                             amount: tx.amount
                         });
                     }
@@ -110,6 +134,13 @@ angular.module('air.controllers', [])
             Timer.stopTimer();
         });
     })
+
+
+    .controller('SellBitcoinSuccessCtrl', function ($scope, $state, $stateParams) {
+        'use strict';
+        $scope.amount = $stateParams.amount;
+    })
+
 
     .controller('BuyKeypadCtrl', function ($scope, $state) {
         'use strict';
@@ -152,6 +183,7 @@ angular.module('air.controllers', [])
 
     })
 
+
     .controller('BuyBitcoinProvideEmailCtrl', function ($scope, $state, $stateParams) {
         'use strict';
         console.log('buy bitcoin provide email controller');
@@ -169,6 +201,7 @@ angular.module('air.controllers', [])
             });
         };
     })
+
 
     .controller('BuyBitcoinCtrl', function ($state, $scope, $stateParams) {
         'use strict';
@@ -243,11 +276,6 @@ angular.module('air.controllers', [])
     })
 
 
-    .controller('SellSuccessCtrl', function ($scope, $state, $stateParams) {
-        'use strict';
-        $scope.amount = $stateParams.amount;
-    })
-
     .controller('BuyAirtimeCtrl', function ($scope, $state, Bitrefill) {
         'use strict';
         $scope.data = {};
@@ -264,6 +292,7 @@ angular.module('air.controllers', [])
             })
         }
     })
+
 
     .controller('BuyAirtimeOperatorCtrl', function ($scope, $state, Bitrefill, $stateParams) {
         'use strict';
