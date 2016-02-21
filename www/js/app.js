@@ -115,6 +115,37 @@ angular.module('air', ['ionic',
                 }
             })
 
+            .state('app.buy_airtime_operator', {
+                url: '/buy_airtime_operator',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/buy_airtime_operator.html',
+                        controller: 'BuyAirtimeOperatorCtrl'
+                    }
+                },
+                params: {
+                    airtimeData: null,
+                    number: null
+
+                }
+            })
+
+            .state('app.buy_airtime_confirm', {
+                url: '/buy_airtime_confirm',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/buy_airtime_confirm.html',
+                        controller: 'BuyAirtimeOperatorCtrl'
+                    }
+                },
+                params: {
+                    package: null,
+                    number: null,
+                    email: 'info@zapgo.co',
+                    operatorSlug: null
+                }
+            })
+
             .state('app.sell_bitcoin', {
                 url: '/sell_bitcoin',
                 views: {

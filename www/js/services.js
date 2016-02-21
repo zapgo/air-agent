@@ -101,6 +101,7 @@ angular.module('air.services', [])
         var self = this;
 
         self.lookup_number = function (number) {
+            console.log(number);
             return $http.post(API + '/bitrefill_lookup/',{
                 'number': number
             });

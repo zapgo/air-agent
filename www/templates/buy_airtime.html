@@ -1,11 +1,11 @@
-<ion--view view-title="Sell Airtime">
+<ion--view view-title="Buy Airtime">
 
    <ion-content class="padding has-header gray-bg">
         <div class="card" style="margin-top: 0;">
           <div class="item item-divider">
             Mobile number to recharge
           </div>
-            <intlpn ng-model="number" placeholder="Mobile number" default-country="za"></intlpn>
+            <intlpn ng-model="data.number" placeholder="Mobile number" default-country="za"></intlpn>
         </div>
     </ion-content>
 
@@ -13,7 +13,7 @@
     <ion-footer-bar class="high-footer bar-dark">
     </ion-footer-bar>
 
-    <button class="high-footer bar bar-footer bar-air" ng-click="lookup_number(number)">
+    <button class="high-footer bar bar-footer bar-air" ng-click="lookup_number(data.number)">
         <h1 class="title">Continue</h1>
     </button>
 
