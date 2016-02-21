@@ -1,0 +1,22 @@
+<ion--view view-title="Provide Email">
+
+    <ion-content>
+        <h4 class="list-header">Please provide your email address to receive a receipt of the transaction.</h4>
+
+        <div class="list list-inset">
+            <label class="item item-input">
+                <input ng-model="data.email" type="text" placeholder="Email">
+            </label>
+        </div>
+
+    </ion-content>
+
+    <!-- Footer bar hack to get layout right -->
+    <ion-footer-bar class="high-footer bar-dark">
+    </ion-footer-bar>
+
+    <button class="high-footer bar bar-footer bar-air" ng-click="submit(sellAmount, data.email)">
+        <h1 class="title">Continue</h1>
+    </button>
+
+</ion--view>

@@ -1,0 +1,36 @@
+<ion--view view-title="Confirm Purchase">
+    <ion-content class="padding">
+
+        <div class="row">
+            <div class="col text-center">
+                <h4>Please pay the agent R {{ buyAmount }}.</h4>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 2%;">
+            <div class="item item-divider">
+                Transaction details
+            </div>
+            <div class="item item-text-wrap text-center">
+                R {{ buyAmount }} will be sent to <b>{{ email }}</b>.
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col text-center">
+                <p>*Warning: The transaction can not be reversed if details are incorrect.</p>
+            </div>
+        </div>
+
+    </ion-content>
+
+    <div class="row">
+        <a class="col col-50 high-footer bar bar-footer bar-cancel" href="#/app/">
+            <h1 class="title">Cancel</h1>
+        </a>
+        <button class="col col-50 col-offset-50 high-footer bar bar-footer bar-air" ng-click="submit(buyAmount, data.email)">
+            <h1 class="title">Confirm</h1>
+        </button>
+    </div>
+
+</ion--view>

@@ -2,8 +2,11 @@
 
     <ion-content class="padding has-header" overflow-scroll="false" scroll="false" cache-view="false">
 
-
         <div class="item item-image hide-lines">
+            <h3>Please send R 30.00 to </h3>
+
+            <h1>{{ email }}</h1>
+
             <a href="{{ tx_data.meta.bitcoin_uri }}" onclick="openExternal(this.href)">
                 <img id="qr_code" ng-src="{{ tx_data.meta.qr_code }}" style="width:200px; height: auto;">
             </a>
@@ -13,8 +16,13 @@
             <div align="center"><p>{{ tx_data.meta.bitcoin_address }}</p></div>
         </div>
 
+        <div class="hide-lines">
+            <div align="center"><h1>{{ tx_data.meta.amount_required }} BTC</h1></div>
+        </div>
+
         <div class="item hide-lines">
-            <div align="center" id="clockdiv"><h1><span class="minutes">10</span>:<span class="seconds">00</span></h1></div>
+            <div align="center" id="clockdiv"><h1><span class="minutes">10</span>:<span class="seconds">00</span></h1>
+            </div>
         </div>
 
     </ion-content>

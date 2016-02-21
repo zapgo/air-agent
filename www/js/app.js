@@ -178,6 +178,117 @@ angular.module('air', ['ionic',
                 }
             })
 
+            .state('app.buy_air_keypad', {
+                url: '/buy_air_keypad',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/keypad.html',
+                        controller: 'BuyAirKeypadCtrl'
+                    }
+                }
+            })
+
+            .state('app.buy_air_provide_email', {
+                url: '/buy_air_provide_email',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/buy_air_provide_email.html',
+                        controller: 'BuyAirProvideEmailCtrl'
+                    }
+                },
+                params: {
+                    amount: null,
+                    email: null
+                }
+            })
+
+            .state('app.buy_air_confirm', {
+                url: '/buy_air_confirm',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/buy_air_confirm.html',
+                        controller: 'BuyAirConfirmCtrl'
+                    }
+                },
+                params: {
+                    amount: null,
+                    email: null
+                }
+            })
+
+            .state('app.buy_air_success', {
+                url: '/buy_air_success',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/buy_air_success.html',
+                        controller: 'BuyAirSuccessCtrl'
+                    }
+                },
+                params: {
+                    amount: null,
+                    email: null
+                }
+            })
+
+
+
+
+            //fdghddsgdfhgfdhfdgdfsgfhghdghdfgsgfhghdg
+
+            .state('app.sell_air_keypad', {
+                url: '/sell_air_keypad',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/keypad.html',
+                        controller: 'SellKeypadCtrl'
+                    }
+                }
+            })
+
+            .state('app.sell_air_provide_email', {
+                url: '/sell_air_provide_email',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/sell_air_provide_email.html',
+                        controller: 'SellAirProvideEmailCtrl'
+                    }
+                },
+                params: {
+                    amount: null,
+                    email: null
+                }
+            })
+
+            .state('app.sell_air', {
+                url: '/sell_air',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/sell_air.html',
+                        controller: 'SellAirCtrl'
+                    }
+                },
+                params: {
+                    amount: null
+                }
+            })
+
+            .state('sell_air_success', {
+                url: '/sell_air_success',
+                templateUrl: 'templates/sell_air_success.html',
+                params: {
+                    amount: null,
+                    controller: 'SellAirSuccessCtrl'
+                }
+            })
+
+            // fgdhgfhfgdsfhghfgfsdgfhghfgdfdsfhgdhdjfgdfg
+
+
+
+
+
+
+
             .state('app.dashboard', {
                 url: '/dashboard',
                 views: {
@@ -228,7 +339,6 @@ angular.module('air', ['ionic',
                     operatorSlug: null
                 }
             })
-
 
             .state('app.accounts', {
                 url: '/accounts',
