@@ -10,7 +10,7 @@
             <div class="input-label">
                 Operator
             </div>
-            <select ng-model="data.operator">
+            <select ng-model="data.operator_slug">
                 <option ng-selected="{{operator.slug==data.defaultSelected.operator}}" ng-repeat="operator in data.operatorList" value="{{ operator.slug }}">{{ operator.name }}</option>
             </select>
         </label>
@@ -18,7 +18,7 @@
             <div class="input-label">
                 Package
             </div>
-            <select ng-model="data.package">
+            <select ng-model="data.value_package">
                 <option ng-selected="{{package.value==data.defaultSelected.package}}" ng-repeat="package in data.airtime.operator.packages" value="{{ package.value }}">{{ package.value }} {{ data.currency }}</option>
             </select>
         </label>

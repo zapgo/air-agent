@@ -219,28 +219,33 @@ angular.module('air.controllers', [])
             console.log($scope.data);
         }
         $scope.confirm = function () {
-            console.log($scope.data.package)
-            console.log($scope.data.operator)
+            var number = $stateParams.number;
+            var email = $stateParams.email;
+            var operator_slug = $scope.data.operator_slug;
+            var value_package = $scope.data.value_package;
+
+            var getQuote = Bitrefill.quote(number,
+                operator_slug,
+                email,
+                value_package);
+
+            getQuote.then(function (response) {
+                    var quote = response.data
+                    console.log(quote)
+                    $state.go('app.buy_airtime_success', {
+                        number: number,
+                        operator_slug: operator_slug,
+                        package: value_package,
+                        quote: quote
+                    });
+                }
+            );
         }
     })
 
     .controller('BuyAirtimeConfirmCtrl', function ($scope, $state, Bitrefill, $stateParams) {
         'use strict';
-        if ($stateParams.airtimeData == null) {
-            $state.go('app.buy_airtime');
-        } else {
-            $scope.data = {
-                airtime: $stateParams.airtimeData,
-                currency: $stateParams.airtimeData.country.currencies[0],
-                defaultSelected: {
-                    operator: $stateParams.airtimeData.operator.name,
-                    package: $stateParams.airtimeData.operator.packages[0].value
-                }
-            };
 
-            console.log('hello');
-            console.log($scope.data);
-        }
     });
 
 

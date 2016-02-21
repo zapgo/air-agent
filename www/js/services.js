@@ -102,13 +102,18 @@ angular.module('air.services', [])
 
         self.lookup_number = function (number) {
             console.log(number);
-            return $http.post(API + '/bitrefill_lookup/',{
+            return $http.post(API + '/bitrefill_lookup/', {
                 'number': number
             });
         };
 
-        self.quote = function () {
-            return $http.post(API + '/bitrefill_quote/');
+        self.quote = function (number, operator_slug, email, value_package) {
+            return $http.post(API + '/bitrefill_quote/', {
+                'number': number,
+                'value_package': value_package,
+                'operator_slug': operator_slug,
+                'email': email
+            });
         };
 
         self.create = function (tx_type, quote_reference) {
