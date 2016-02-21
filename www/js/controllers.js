@@ -155,27 +155,30 @@ angular.module('air.controllers', [])
     .controller('BuyBitcoinProvideEmailCtrl', function ($scope, $state, $stateParams) {
         'use strict';
         console.log('buy bitcoin provide email controller');
+        $scope.data = {};
         $scope.buyAmount = $stateParams.amount;
-        $scope.email = $stateParams.email;
         console.log($scope.buyAmount);
-        console.log($scope.email);
+        console.log($scope.data.email);
 
         $scope.submit = function (amount, email) {
             console.log(amount);
             console.log(email);
             $state.go('app.buy_bitcoin', {
                 amount: amount,
-                email: email
+                email: $scope.data.email
             });
         };
-
     })
 
-    .controller('BuyBitcoinCtrl', function ($scope, $stateParams) {
+    .controller('BuyBitcoinCtrl', function ($state, $scope, $stateParams) {
         'use strict';
         console.log('buy controller');
         $scope.buyAmount = $stateParams.amount;
+        $scope.email = $stateParams.email;
+        $scope.address = $stateParams.address;
         console.log($scope.buyAmount);
+        console.log($scope.email);
+        console.log($scope.address);
 
         $scope.scanQr = function () {
             cordova.plugins.barcodeScanner.scan(
@@ -191,8 +194,54 @@ angular.module('air.controllers', [])
             );
         }
 
-
+        $scope.submit = function (amount, email, address) {
+            console.log('go to buy confirm page')
+            console.log(amount);
+            console.log(email);
+            console.log(address);
+            $state.go('app.buy_bitcoin_confirm', {
+                amount: amount,
+                email: email,
+                address: address
+            });
+        };
     })
+
+
+    .controller('BuyBitcoinConfirmCtrl', function ($scope, $state, $stateParams) {
+        'use strict';
+        console.log('confirm bitcoin purchase');
+        $scope.data = {};
+        $scope.buyAmount = $stateParams.amount;
+        $scope.email = $stateParams.email;
+        $scope.address = $stateParams.address;
+        console.log($scope.buyAmount);
+        console.log($scope.email);
+        console.log($scope.address);
+
+        $scope.submit = function (amount, email) {
+            console.log(amount);
+            console.log(email);
+            $state.go('app.buy_bitcoin_success', {
+                amount: amount,
+                email: email
+            });
+        };
+    })
+
+
+    .controller('BuyBitcoinSuccessCtrl', function ($scope, $state, $stateParams) {
+        'use strict';
+        console.log('confirm bitcoin purchase');
+        $scope.data = {};
+        $scope.buyAmount = $stateParams.amount;
+        $scope.email = $stateParams.email;
+        $scope.address = $stateParams.address;
+        console.log($scope.buyAmount);
+        console.log($scope.email);
+        console.log($scope.address);
+    })
+
 
     .controller('SellSuccessCtrl', function ($scope, $state, $stateParams) {
         'use strict';

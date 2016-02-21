@@ -12479,6 +12479,21 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
     color: #56C1ED;
 }
 
+.bar.bar-cancel {
+    border-color: #e42112;
+    background-color: #ef473a;
+    background-image: none;
+    color: #fff;
+}
+
+.bar.bar-cancel .title {
+    color: #fff;
+}
+
+.bar.bar-cancel.bar-footer .title {
+    top: 5px;
+}
+
 .graybg {
     background-color: #F6F6F6;
 }

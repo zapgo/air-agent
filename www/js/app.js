@@ -115,7 +115,39 @@ angular.module('air', ['ionic',
                     }
                 },
                 params: {
-                    amount: null
+                    amount: null,
+                    email: null,
+                    address: null
+                }
+            })
+
+            .state('app.buy_bitcoin_confirm', {
+                url: '/buy_bitcoin_confirm',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/buy_bitcoin_confirm.html',
+                        controller: 'BuyBitcoinConfirmCtrl'
+                    }
+                },
+                params: {
+                    amount: null,
+                    email: null,
+                    address: null
+                }
+            })
+
+            .state('app.buy_bitcoin_success', {
+                url: '/buy_bitcoin_success',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/buy_bitcoin_success.html',
+                        controller: 'BuyBitcoinSuccessCtrl'
+                    }
+                },
+                params: {
+                    amount: null,
+                    email: null,
+                    address: null
                 }
             })
 
