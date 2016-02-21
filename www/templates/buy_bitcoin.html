@@ -1,37 +1,33 @@
 <ion--view view-title="Buying Bitcoin">
 
-    <ion-content class="padding has-header" overflow-scroll="false" scroll="false">
-        <div class="row">
-            <div class="col text-center">
-                <h3 class="title">Buying R{{ buyAmount }} worth of bitcoin.</h3>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col text-center">
-                <button class="button button-air" ng-click="scanQr()">Scan Receive Address</button>
-            </div>
-        </div>
-        <br>
-
-        <div class="row">
-            <div class="col text-center">
-                <p>or</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="item item-divider text-center">
-                Manual Entry
-            </div>
-            <div class="item item-text-wrap">
-                <label class="item item-input">
-                    <input ng-model="address" type="text" placeholder="Bitcoin Address">
-                </label>
+    <ion-content class="padding" overflow-scroll="false" scroll="false">
+        <div class="row row-top">
+            <div class="col col-100 text-center">
+                <h4>You are buying R{{ buyAmount }} worth of bitcoin.</h4>
                 <br>
-                <div class="col text-center">
-                    <button class="button button-small button-air button-block">Continue</button>
-                </div>
+                <p>Tap to scan your bitcoin address for receiving bitcoin. </p>
+            </div>
+        </div>
+
+
+        <div class="row row-center">
+            <div class="col col-100 col-center text-center">
+                <button class="button button-clear" ng-click="scanQr()"><i class="col col-100 ion-qr-scanner"
+                                                                           style="font-size: 100px"></i></button>
+            </div>
+        </div>
+
+        <div class="list" style="position: absolute; bottom: 10px; width: 100%; padding-right: 20px;">
+            <p><b>*Or manually enter/paste bitcoin address.</b></p>
+
+            <label class="item item-input">
+                <input ng-model="address" type="text" placeholder="Bitcoin address">
+            </label>
+
+            <div class="col col-50 col-offset-50 text-center">
+                <button class="button button-air button-block" ng-click="submit(buyAmount, email, address)">
+                    Next
+                </button>
             </div>
         </div>
 

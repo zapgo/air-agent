@@ -49,36 +49,11 @@ angular.module('air', ['ionic',
                 controller: 'AppCtrl'
             })
 
-            .state('sell_keypad', {
-                url: '/sell_keypad',
-                templateUrl: 'templates/keypad.html',
-                controller: 'SellKeypadCtrl'
-            })
-
-            .state('sell_success', {
-                url: '/sell_success',
-                templateUrl: 'templates/sell_success.html',
-                params: {
-                    amount: null,
-                    controller: 'SellSuccessCtrl'
-                }
-            })
-
             .state('loading', {
                 url: '/loading',
                 templateUrl: 'templates/loading.html',
                 params: {
                     amount: null
-                }
-            })
-
-            .state('app.sell_btc_keypad', {
-                url: '/sell_btc_keypad',
-                views: {
-                    'menuContent': {
-                        templateUrl: 'templates/keypad.html',
-                        controller: 'SellKeypadCtrl'
-                    }
                 }
             })
 
@@ -92,6 +67,20 @@ angular.module('air', ['ionic',
                 }
             })
 
+            .state('app.buy_bitcoin_provide_email', {
+                url: '/buy_bitcoin_provide_email',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/buy_bitcoin_provide_email.html',
+                        controller: 'BuyBitcoinProvideEmailCtrl'
+                    }
+                },
+                params: {
+                    amount: null,
+                    email: null
+                }
+            })
+
             .state('app.buy_bitcoin', {
                 url: '/buy_bitcoin',
                 views: {
@@ -101,7 +90,100 @@ angular.module('air', ['ionic',
                     }
                 },
                 params: {
+                    amount: null,
+                    email: null,
+                    address: null
+                }
+            })
+
+            .state('app.buy_bitcoin_confirm', {
+                url: '/buy_bitcoin_confirm',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/buy_bitcoin_confirm.html',
+                        controller: 'BuyBitcoinConfirmCtrl'
+                    }
+                },
+                params: {
+                    amount: null,
+                    email: null,
+                    address: null
+                }
+            })
+
+            .state('app.buy_bitcoin_success', {
+                url: '/buy_bitcoin_success',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/buy_bitcoin_success.html',
+                        controller: 'BuyBitcoinSuccessCtrl'
+                    }
+                },
+                params: {
+                    amount: null,
+                    email: null,
+                    address: null
+                }
+            })
+
+            .state('sell_keypad', {
+                url: '/sell_keypad',
+                templateUrl: 'templates/keypad.html',
+                controller: 'SellKeypadCtrl'
+            })
+
+            .state('app.sell_btc_keypad', {
+                url: '/sell_btc_keypad',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/keypad.html',
+                        controller: 'SellKeypadCtrl'
+                    }
+                }
+            })
+
+            .state('app.sell_bitcoin_provide_email', {
+                url: '/sell_bitcoin_provide_email',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/sell_bitcoin_provide_email.html',
+                        controller: 'SellBitcoinProvideEmailCtrl'
+                    }
+                },
+                params: {
+                    amount: null,
+                    email: null
+                }
+            })
+
+            .state('app.sell_bitcoin', {
+                url: '/sell_bitcoin',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/sell_bitcoin.html',
+                        controller: 'SellBitcoinCtrl'
+                    }
+                },
+                params: {
                     amount: null
+                }
+            })
+
+            .state('sell_bitcoin_success', {
+                url: '/sell_bitcoin_success',
+                templateUrl: 'templates/sell_bitcoin_success.html',
+                params: {
+                    amount: null,
+                    controller: 'SellBitcoinSuccessCtrl'
+                }
+            })
+
+            .state('app.dashboard', {
+                url: '/dashboard',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/dashboard.html'
+                    }
                 }
             })
 
@@ -147,27 +229,16 @@ angular.module('air', ['ionic',
                 }
             })
 
-            .state('app.sell_bitcoin', {
-                url: '/sell_bitcoin',
-                views: {
-                    'menuContent': {
-                        templateUrl: 'templates/sell_bitcoin.html',
-                        controller: 'SellBitcoinCtrl'
-                    }
-                },
-                params: {
-                    amount: null
-                }
-            })
 
-            .state('app.dashboard', {
-                url: '/dashboard',
+            .state('app.accounts', {
+                url: '/accounts',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/dashboard.html'
+                        templateUrl: 'templates/accounts.html'
                     }
                 }
             });
+
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/app/dashboard');
     });
