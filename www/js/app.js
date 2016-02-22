@@ -345,6 +345,20 @@ angular.module('air', ['ionic',
                 }
             })
 
+            .state('app.buy_airtime_success', {
+                url: '/buy_airtime_success',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/buy_airtime_success.html',
+                        controller: 'BuyAirtimeSuccessCtrl'
+                    }
+                },
+                params: {
+                    amount: null,
+                    email: null
+                }
+            })
+
             .state('app.accounts', {
                 url: '/accounts',
                 views: {

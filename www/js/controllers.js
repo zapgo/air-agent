@@ -605,6 +605,7 @@ angular.module('air.controllers', [])
         }
     })
 
+
     .controller('BuyAirtimeConfirmCtrl', function ($scope, $state, Bitrefill, $stateParams) {
         'use strict';
         if ($stateParams.number == null) {
@@ -620,8 +621,21 @@ angular.module('air.controllers', [])
         }
         $scope.placeOrder = function (quoteReference) {
             var postOrder = Bitrefill.create(quoteReference)
-            postOrder.then ( function (response) {
+            postOrder.then(function (response) {
                 console.log(response)
+                $state.go('app.buy_airtime_success', {
+                });
             })
-        }
+        };
+    })
+
+
+    .controller('BuyAirtimeSuccessCtrl', function ($scope, $state, $stateParams) {
+        'use strict';
+        console.log('air success purchase');
+        $scope.data = {};
+        $scope.buyAmount = $stateParams.amount;
+        $scope.email = $stateParams.email;
+        console.log($scope.buyAmount);
+        console.log($scope.email);
     });
