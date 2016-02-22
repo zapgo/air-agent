@@ -336,10 +336,12 @@ angular.module('air', ['ionic',
                 },
                 params: {
                     quote: null,
-                    package: null,
+                    valuePackage: null,
+                    packageCurrency: null,
                     number: null,
                     email: 'info@zapgo.co',
-                    operatorSlug: null
+                    operatorSlug: null,
+                    operatorName: null
                 }
             })
 
