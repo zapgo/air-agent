@@ -276,11 +276,16 @@ angular.module('air.controllers', [])
     })
 
 
-    .controller('BuyAirtimeCtrl', function ($scope, $state, Bitrefill) {
+    .controller('BuyAirtimeCtrl', function ($scope, $state, $ionicLoading, Bitrefill) {
         'use strict';
         $scope.data = {};
         console.log($scope.data.number);
         $scope.lookup_number = function (number) {
+            $ionicLoading.show({
+                //template: '<ion-spinner class="spinner-light" icon="ripple"></ion-spinner>',
+                templateUrl: 'templates/loading.html',
+                hideOnStateChange: true
+            });
             var lookup = Bitrefill.lookup_number(number);
             lookup.then(function (rawData) {
                 var airtimeData = rawData.data;
@@ -294,7 +299,7 @@ angular.module('air.controllers', [])
     })
 
 
-    .controller('BuyAirtimeOperatorCtrl', function ($scope, $state, Bitrefill, $stateParams) {
+    .controller('BuyAirtimeOperatorCtrl', function ($scope, $state, Bitrefill, $stateParams, $ionicLoading) {
         'use strict';
         if ($stateParams.airtimeData == null) {
             $state.go('app.buy_airtime');
@@ -308,33 +313,44 @@ angular.module('air.controllers', [])
                 operatorList: operatorList,
                 currency: $stateParams.airtimeData.country.currencies[0],
                 defaultSelected: {
-                    operator: $stateParams.airtimeData.operator.slug,
-                    value_package: $stateParams.airtimeData.operator.packages[0].value
+                    operator: $stateParams.airtimeData.operator,
+                    valuePackage: $stateParams.airtimeData.operator.packages[0].value
                 }
             };
             console.log('hello');
             console.log($scope.data);
         }
         $scope.confirm = function () {
+
+            $ionicLoading.show({
+                //template: '<ion-spinner class="spinner-light" icon="ripple"></ion-spinner>',
+                templateUrl: 'templates/loading.html',
+                hideOnStateChange: true
+            });
+
             var number = $stateParams.number;
             var email = $stateParams.email;
-            var operator_slug = $scope.data.operator_slug;
-            var value_package = $scope.data.value_package;
+            var operatorSlug = $scope.data.operator.slug;
+            var operatorName = $scope.data.operator.name;
+            var valuePackage = $scope.data.valuePackage;
+            var packageCurrency = $stateParams.airtimeData.country.currencies[0];
 
-            console.log(number,operator_slug,email,value_package);
+            console.log(number, operatorSlug, operatorName, email, valuePackage, packageCurrency);
 
             var getQuote = Bitrefill.quote(number,
-                   operator_slug,
-                   email,
-                   value_package);
+                operatorSlug,
+                email,
+                valuePackage);
 
             getQuote.then(function (response) {
                     var quote = response.data;
                     console.log(quote);
                     $state.go('app.buy_airtime_confirm', {
                         number: number,
-                        operator_slug: operator_slug,
-                        package: value_package,
+                        operatorSlug: operatorSlug,
+                        operatorName: operatorName,
+                        valuePackage: valuePackage,
+                        packageCurrency: packageCurrency,
                         quote: quote
                     });
                 }
@@ -344,5 +360,21 @@ angular.module('air.controllers', [])
 
     .controller('BuyAirtimeConfirmCtrl', function ($scope, $state, Bitrefill, $stateParams) {
         'use strict';
-
+        if ($stateParams.number == null) {
+            $state.go('app.buy_airtime');
+        } else {
+            $scope.data = {};
+            $scope.data.number = $stateParams.number;
+            $scope.data.operatorSlug = $stateParams.operatorSlug;
+            $scope.data.operatorName = $stateParams.operatorName;
+            $scope.data.packageCurrency = $stateParams.packageCurrency;
+            $scope.data.valuePackage = $stateParams.valuePackage;
+            $scope.data.quote = $stateParams.quote;
+        }
+        $scope.placeOrder = function (quoteReference) {
+            var postOrder = Bitrefill.create(quoteReference)
+            postOrder.then ( function (response) {
+                console.log(response)
+            })
+        }
     });

@@ -116,10 +116,10 @@ angular.module('air.services', [])
             });
         };
 
-        self.create = function (tx_type, quote_reference) {
+        self.create = function (quoteReference) {
             return $http.post(API + '/transactions/', {
-                'tx_type': tx_type,
-                'quote_reference': quote_reference
+                'tx_type': 'payment_bitrefill',
+                'quote_reference': quoteReference
             });
         }
     });
