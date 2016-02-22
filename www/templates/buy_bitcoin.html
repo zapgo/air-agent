@@ -3,7 +3,7 @@
     <ion-content class="padding" overflow-scroll="false" scroll="false">
         <div class="row row-top">
             <div class="col col-100 text-center">
-                <h4>You are buying R{{ buyAmount }} worth of bitcoin.</h4>
+                <h4>You are buying R{{ data.amount }} worth of bitcoin.</h4>
                 <br>
                 <p>Tap to scan your bitcoin address for receiving bitcoin. </p>
             </div>
@@ -12,21 +12,11 @@
 
         <div class="row row-center">
             <div class="col col-100 col-center text-center">
-                <button class="button button-clear" ng-click="scanQr()"><i class="col col-100 ion-qr-scanner"
-                                                                           style="font-size: 100px"></i></button>
-            </div>
-        </div>
-
-        <div class="list" style="position: absolute; bottom: 10px; width: 100%; padding-right: 20px;">
-            <p><b>*Or manually enter/paste bitcoin address.</b></p>
-
-            <label class="item item-input">
-                <input ng-model="address" type="text" placeholder="Bitcoin address">
-            </label>
-
-            <div class="col col-50 col-offset-50 text-center">
-                <button class="button button-air button-block" ng-click="submit(buyAmount, email, address)">
-                    Next
+                <button class="button button-large button-air button-block" ng-click="scanQr()">
+                    Scan Address
+                </button>
+                <button class="button button-large button-air button-block" ng-click="submit(data.amount, data.email)">
+                    Enter Address Manually
                 </button>
             </div>
         </div>

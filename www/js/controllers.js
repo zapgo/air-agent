@@ -188,15 +188,15 @@ angular.module('air.controllers', [])
         'use strict';
         console.log('buy bitcoin provide email controller');
         $scope.data = {};
-        $scope.buyAmount = $stateParams.amount;
-        console.log($scope.buyAmount);
+        $scope.data.amount = $stateParams.amount;
+        console.log($scope.data.amount);
         console.log($scope.data.email);
 
         $scope.submit = function (amount, email) {
             console.log(amount);
             console.log(email);
             $state.go('app.buy_bitcoin', {
-                amount: amount,
+                amount: $scope.data.amount,
                 email: $scope.data.email
             });
         };
@@ -206,12 +206,13 @@ angular.module('air.controllers', [])
     .controller('BuyBitcoinCtrl', function ($state, $scope, $stateParams) {
         'use strict';
         console.log('buy controller');
-        $scope.buyAmount = $stateParams.amount;
-        $scope.email = $stateParams.email;
-        $scope.address = $stateParams.address;
-        console.log($scope.buyAmount);
-        console.log($scope.email);
-        console.log($scope.address);
+        $scope.data = {};
+        $scope.data.amount = $stateParams.amount;
+        $scope.data.email = $stateParams.email;
+        $scope.data.address = $stateParams.address;
+        console.log($scope.data.amount);
+        console.log($scope.data.email);
+        console.log($scope.data.address)
 
         $scope.scanQr = function () {
             cordova.plugins.barcodeScanner.scan(
@@ -229,13 +230,31 @@ angular.module('air.controllers', [])
 
         $scope.submit = function (amount, email, address) {
             console.log('go to buy confirm page')
-            console.log(amount);
-            console.log(email);
-            console.log(address);
+            $state.go('app.buy_bitcoin_manual', {
+                amount: $scope.data.amount,
+                email: $scope.data.email,
+                address: $scope.data.address
+            });
+        };
+    })
+
+    .controller('BuyBitcoinManualCtrl', function ($state, $scope, $stateParams) {
+        'use strict';
+        console.log('buy controller');
+        $scope.data = {};
+        $scope.data.amount = $stateParams.amount;
+        $scope.data.email = $stateParams.email;
+        $scope.data.address = $stateParams.address;
+        console.log($scope.data.amount);
+        console.log($scope.data.email);
+        console.log($scope.data.address);
+
+        $scope.submit = function (amount, email, address) {
+            console.log('go to buy confirm page from manual address')
             $state.go('app.buy_bitcoin_confirm', {
-                amount: amount,
-                email: email,
-                address: address
+                amount: $scope.data.amount,
+                email: $scope.data.email,
+                address: $scope.data.address
             });
         };
     })
@@ -245,19 +264,18 @@ angular.module('air.controllers', [])
         'use strict';
         console.log('confirm bitcoin purchase');
         $scope.data = {};
-        $scope.buyAmount = $stateParams.amount;
-        $scope.email = $stateParams.email;
-        $scope.address = $stateParams.address;
-        console.log($scope.buyAmount);
-        console.log($scope.email);
-        console.log($scope.address);
+        $scope.data.amount = $stateParams.amount;
+        $scope.data.email = $stateParams.email;
+        $scope.data.address = $stateParams.address;
+        console.log($scope.data.amount);
+        console.log($scope.data.email);
+        console.log($scope.data.address);
 
-        $scope.submit = function (amount, email) {
-            console.log(amount);
-            console.log(email);
+        $scope.submit = function (amount, email, address) {
             $state.go('app.buy_bitcoin_success', {
-                amount: amount,
-                email: email
+                amount: $scope.data.amount,
+                email: $scope.data.email,
+                address: $scope.data.address
             });
         };
     })
@@ -366,14 +384,6 @@ angular.module('air.controllers', [])
         console.log($scope.buyAmount);
         console.log($scope.email);
     })
-
-
-    //fffgdghfhgdfdsagdhf
-    //fffgdghfhgdfdsagdhf
-    //fffgdghfhgdfdsagdhf
-    //fffgdghfhgdfdsagdhf
-    //fffgdghfhgdfdsagdhf
-    //fffgdghfhgdfdsagdhf
 
 
     .controller('SellAirKeypadCtrl', function ($scope, $state) {
@@ -512,14 +522,6 @@ angular.module('air.controllers', [])
         $scope.amount = $stateParams.amount;
     })
 
-    //fggdffgdhfgjfghfgdsfgfhg
-    //fggdffgdhfgjfghfgdsfgfhg
-    //fggdffgdhfgjfghfgdsfgfhg
-    //fggdffgdhfgjfghfgdsfgfhg
-    //fggdffgdhfgjfghfgdsfgfhg
-    //fggdffgdhfgjfghfgdsfgfhg
-    //fggdffgdhfgjfghfgdsfgfhg
-
 
     .controller('BuyAirtimeCtrl', function ($scope, $state, Bitrefill) {
         'use strict';
@@ -527,9 +529,9 @@ angular.module('air.controllers', [])
         console.log($scope.data.number);
         $scope.lookup_number = function (number) {
             var lookup = Bitrefill.lookup_number(number);
-            lookup.then(function (rawData) {
-                var airtimeData = rawData.data;
-                console.log(rawData);
+            lookup.then(function (response) {
+                var airtimeData = response.data;
+                console.log(response);
                 $state.go('app.buy_airtime_operator', {
                     airtimeData: airtimeData,
                     number: $scope.data.number

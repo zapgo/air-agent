@@ -28,4 +28,22 @@ angular.module('air.services.transaction', [])
                 'currency': currency
             });
         }
+    })
+
+    .service('Quote', function ($http, API) {
+        'use strict';
+        var self = this;
+
+        self.get = function (quoteId) {
+            return $http.get(API + '/quote/' + quoteId + '/');
+        };
+
+        self.create = function (type, amount, input_currency, output_currency) {
+            return $http.post(API + '/quote/', {
+                'tx_type': type,
+                'amount': amount,
+                'input_currency': input_currency,
+                'output_currency': output_currency
+            });
+        }
     });

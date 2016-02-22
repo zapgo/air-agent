@@ -96,6 +96,21 @@ angular.module('air', ['ionic',
                 }
             })
 
+            .state('app.buy_bitcoin_manual', {
+                url: '/buy_bitcoin_manual',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/buy_bitcoin_manual.html',
+                        controller: 'BuyBitcoinManualCtrl'
+                    }
+                },
+                params: {
+                    amount: null,
+                    email: null,
+                    address: null
+                }
+            })
+
             .state('app.buy_bitcoin_confirm', {
                 url: '/buy_bitcoin_confirm',
                 views: {
@@ -107,7 +122,8 @@ angular.module('air', ['ionic',
                 params: {
                     amount: null,
                     email: null,
-                    address: null
+                    address: null,
+                    quote_reference: null
                 }
             })
 
@@ -230,11 +246,6 @@ angular.module('air', ['ionic',
                 }
             })
 
-
-
-
-            //fdghddsgdfhgfdhfdgdfsgfhghdghdfgsgfhghdg
-
             .state('app.sell_air_keypad', {
                 url: '/sell_air_keypad',
                 views: {
@@ -280,14 +291,6 @@ angular.module('air', ['ionic',
                     controller: 'SellAirSuccessCtrl'
                 }
             })
-
-            // fgdhgfhfgdsfhghfgfsdgfhghfgdfdsfhgdhdjfgdfg
-
-
-
-
-
-
 
             .state('app.dashboard', {
                 url: '/dashboard',

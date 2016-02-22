@@ -1,0 +1,27 @@
+<ion--view view-title="Buying Bitcoin">
+
+    <ion-content>
+        <h4 class="list-header">Manually enter/paste bitcoin address.</h4>
+
+        <div class="list">
+            <label class="item item-input">
+                <input ng-model="data.address" type="text" placeholder="Bitcoin address">
+            </label>
+        </div>
+
+        </ion-content>
+    {{ data.amount }}
+    {{ data.email }}
+    {{ data.address }}
+
+        <!-- Footer bar hack to get layout right -->
+        <ion-footer-bar class="high-footer bar-dark">
+        </ion-footer-bar>
+
+    </ion-content>
+
+    <button class="high-footer bar bar-footer bar-air" ng-click="submit(data.amount, data.email, data.address)">
+        <h1 class="title">Next</h1>
+    </button>
+
+</ion--view>
